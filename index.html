@@ -3,280 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amandeep Singh - Lead Consultant Resume</title>
+    <title>Amandeep Singh - Technical Portfolio</title>
     <style>
-        /* BASE STYLES */
+        /* BASE STYLES & LAYOUT */
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.5;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-
-        /* RESUME CONTAINER */
-        .resume-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            padding: 40px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-        }
-
-        /* HEADER */
-        .header {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); /* Dark Blue Gradient */
+            color: #ecf0f1;
             text-align: center;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #2c3e50;
-            margin-bottom: 20px;
         }
 
-        .header h1 {
-            margin: 0;
-            color: #2c3e50;
-            font-size: 30px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+        .container {
+            background: rgba(44, 62, 80, 0.95); /* Semi-transparent dark background */
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            width: 90%;
+            transition: all 0.3s ease;
         }
 
-        .header h2 {
-            margin: 5px 0 10px 0;
-            font-size: 18px;
-            color: #555;
-            font-weight: normal;
+        /* TYPOGRAPHY */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            color: #ecf0f1;
         }
 
-        .contact-info {
-            font-size: 14px;
-            color: #666;
+        h2 {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            color: #bdc3c7;
+            font-weight: 300;
         }
 
-        .contact-info a {
-            color: #2c3e50;
+        /* MAIN BUTTONS - BEAUTIFULLY DESIGNED */
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons a, .more-toggle-button {
             text-decoration: none;
-            margin: 0 10px;
-        }
-
-        /* SECTION STYLES */
-        .section-title {
-            color: #2c3e50;
-            font-size: 20px;
-            border-bottom: 2px solid #bdc3c7;
-            padding-bottom: 5px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-
-        /* EXPERIENCE/JOB STYLES */
-        .job {
-            margin-bottom: 20px;
-        }
-
-        .job-title-line {
-            display: flex;
-            justify-content: space-between;
+            padding: 15px 25px;
+            border-radius: 8px;
             font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Resume Button (Primary) */
+        .btn-primary {
+            background-color: #2ecc71; /* Emerald Green */
+            color: #fff;
+            border: 2px solid #2ecc71;
         }
 
-        .job-company {
-            color: #333;
+        .btn-primary:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
         }
 
-        .job-role {
-            font-style: italic;
-            color: #555;
-            font-weight: normal;
+        /* Cover Letter Button (Secondary) */
+        .btn-secondary {
+            background-color: transparent;
+            color: #3498db; /* Bright Blue */
+            border: 2px solid #3498db;
         }
 
-        .job-dates {
-            color: #666;
-            font-weight: normal;
+        .btn-secondary:hover {
+            background-color: #3498db;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
         }
 
-        .job ul {
-            list-style: disc;
-            margin-top: 5px;
-            padding-left: 20px;
-        }
-
-        .job li {
-            margin-bottom: 5px;
-        }
-
-        /* SKILLS STYLES */
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .skill-category {
-            font-weight: bold;
-            color: #333;
-            margin-right: 10px;
-            display: block;
-            margin-top: 5px;
-        }
-
-        .skill-group {
-            margin-bottom: 8px;
+        /* VIEW MORE TOGGLE */
+        .more-toggle-button {
+            background-color: #7f8c8d; /* Grey */
+            color: #fff;
+            border: none;
             width: 100%;
         }
 
-        /* EDUCATION & ACHIEVEMENTS */
-        .detail-line {
+        .more-toggle-button:hover {
+            background-color: #95a5a6;
+            transform: translateY(-2px);
+        }
+
+        /* MORE OPTIONS SECTION (Hidden by default) */
+        #moreOptions {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #moreOptions.visible {
+            max-height: 500px; /* Large enough to show all content */
+            opacity: 1;
+        }
+
+        .additional-links {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            font-size: 15px;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 1em;
         }
 
-        .detail-line span:first-child {
-            font-weight: bold;
+        .additional-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 4px;
+            background: rgba(52, 152, 219, 0.2);
         }
 
-        .detail-line span:last-child {
-            color: #666;
-        }
-
-        /* UTILITY */
-        strong {
-            font-weight: bolder;
+        .additional-links a:hover {
+            background: rgba(52, 152, 219, 0.5);
         }
     </style>
 </head>
 <body>
 
-    <div class="resume-container">
+    <div class="container">
+        <h1>Amandeep Singh</h1>
+        <h2>Lead Consultant | System Architecture & Microservices Specialist</h2>
 
-        <div class="header">
-            <h1>Amandeep Singh</h1>
-            <h2>Lead Consultant | System Architecture & Microservices Specialist</h2>
-            <div class="contact-info">
-                Punjab, India | Phone: <a href="tel:+919478714407">+91-9478714407</a> | Email: <a href="mailto:er.amanmalhi@gmail.com">er.amanmalhi@gmail.com</a> | <a href="https://www.linkedin.com/in/eramandeepsingh" target="_blank">LinkedIn</a>
-            </div>
-        </div>
-
-        <div class="summary">
-            <p>Technology leader with <strong>13+ years of experience</strong> architecting scalable, high-performance distributed systems. Expert in <strong>System Design, Java, Spring Boot, and Microservices</strong> with a proven track record of modernizing monoliths and driving deep performance optimization (reducing processing times by up to 95%). Currently focused on technical consulting, High-Level Design (HLD), and team mentorship.</p>
+        <div class="cta-buttons">
+            <a href="Amandeep_Resume_V2.html" class="btn-primary">View Resume</a>
+            <a href="Amandeep_Cover_Letter_V2.html" class="btn-secondary">View Cover Letter</a>
         </div>
 
-        <div class="skills">
-            <div class="section-title">TECHNICAL SKILLS</div>
-            <div class="skills-list">
-                <div class="skill-group">
-                    <span class="skill-category">System Design & Architecture:</span> Distributed Systems, Scalability, High-Level Design (HLD), Microservices Design Patterns (Saga, Circuit Breaker), Performance Tuning, System Architecture.
-                </div>
-                <div class="skill-group">
-                    <span class="skill-category">Programming & Frameworks:</span> Java (8/11/17), Multithreading, Spring & Spring Boot, Spring WebFlux, Hibernate, Spring DataJPA, Spring Cloud.
-                </div>
-                <div class="skill-group">
-                    <span class="skill-category">Architecture & Messaging:</span> Apache Kafka, Microservices, RESTful APIs, JBPM.
-                </div>
-                <div class="skill-group">
-                    <span class="skill-category">DevOps & Cloud:</span> Containerization Docker, Kubernetes, AWS, Git, SonarQube, Maven, CI/CD.
-                </div>
-                <div class="skill-group">
-                    <span class="skill-category">Databases & Scripting:</span> Oracle, PostgreSQL, Unix Shell Scripting, Python.
-                </div>
-            </div>
-        </div>
+        <button id="toggleMore" class="more-toggle-button">View More Options ↓</button>
 
-        <div class="section-title">PROFESSIONAL EXPERIENCE</div>
-
-        <div class="job">
-            <div class="job-title-line">
-                <span class="job-company">Infosys Limited (Second Tenure)</span>
-                <span class="job-dates">Sep 2025 – Present</span>
-            </div>
-            <div class="job-role">Lead Consultant</div>
-            <ul>
-                <li>Driving end-to-end <strong>System Architecture and High-Level Design (HLD)</strong> for major digital transformation programs across client accounts.</li>
-                <li>Mentoring and guiding cross-functional development teams on system design best practices, scalability, and optimal performance implementation.</li>
-                <li>Collaborating directly with client stakeholders and product owners to define technical roadmaps and ensure architectural alignment with strategic business goals.</li>
-            </ul>
-        </div>
-        
-        <div class="job">
-            <div class="job-title-line">
-                <span class="job-company">Nagarro</span>
-                <span class="job-dates">Nov 2022 – Aug 2025</span>
-            </div>
-            <div class="job-role">Senior Staff Engineer</div>
-            <ul>
-                <li>Designed and developed solutions for system migration and integration with services (SAP, Icertis, Salesforce), utilizing a Reactive Technology Stack (Spring WebFlux) for efficient performance.</li>
-                <li>Re-engineered the database operation strategy for a custom Scheduler Application, successfully reducing service processing time from <strong>8 minutes to 15 seconds</strong>.</li>
-                <li>Collaborated with cross-functional teams on high-level design strategies, and led code reviews and mentoring programs for junior developers.</li>
-            </ul>
-        </div>
-        
-        <div class="job">
-            <div class="job-title-line">
-                <span class="job-company">Amdocs</span>
-                <span class="job-dates">Aug 2021 – Nov 2022</span>
-            </div>
-            <div class="job-role">Software Development Specialist (R&D)</div>
-            <ul>
-                <li>Played an important role in designing the Microservices for migration of the existing <strong>MetroX-Telecom</strong> monolithic application.</li>
-                <li>Developed core R&D solutions using Java (Spring Boot) and Shell scripting.</li>
-                <li>Mentored other developers with code reviews and debugging while coordinating with project managers to ensure timely software delivery.</li>
-            </ul>
-        </div>
-
-        <div class="job">
-            <div class="job-title-line">
-                <span class="job-company">Infosys Limited (First Tenure)</span>
-                <span class="job-dates">Feb 2012 – Aug 2021</span>
-            </div>
-            <div class="job-role">Technology Lead</div>
-            <ul>
-                <li>Redesigned the data fetch and process task flow, reducing execution time from <strong>90 minutes to 3 minutes</strong>, resulting in a 95% improvement in efficiency.</li>
-                <li>Led a team of <strong>12 members</strong> in development and operations, while defining product requirements and roadmaps.</li>
-                <li>Automated manual tasks using Java, Shell scripting, and Python, saving 2-3 person-months of effort.</li>
-                <li>Managed client relationships and technical delivery on-site in the UK for 2 years.</li>
-            </ul>
-        </div>
-
-        <div class="section-title">EDUCATION</div>
-        <div class="education">
-            <div class="detail-line">
-                <span><strong>B.Tech (Computer Science & Engineering)</strong></span>
-                <span>Punjab Technical University Jalandhar (2011)</span>
-            </div>
-            <div class="detail-line">
-                <span><strong>MBA (Human Resources)</strong></span>
-                <span>Panjab University Chandigarh (2015)</span>
+        <div id="moreOptions">
+            <h3>Connect & Follow</h3>
+            <div class="additional-links">
+                <a href="https://www.linkedin.com/in/eramandeepsingh" target="_blank">LinkedIn Profile</a>
+                <a href="[YOUR_YOUTUBE_CHANNEL_LINK]" target="_blank">YouTube Channel</a>
+                <a href="[YOUR_GITHUB_PROFILE_LINK]" target="_blank">GitHub Profile</a>
+                <a href="mailto:er.amanmalhi@gmail.com">Send Email</a>
             </div>
         </div>
-
-        <div class="section-title">PROFESSIONAL ACHIEVEMENTS</div>
-        <div class="achievements">
-            <ul>
-                <li>Infosys Certified: Java, Kanban, and Global Agile Developer.</li>
-                <li>Achieved highest rating (Outstanding) for continuous 6 years in Infosys.</li>
-                <li>Microsoft Certified HTML5, CSS3 and JS.</li>
-                <li>Recipient of multiple Spot Awards and Client Appreciations.</li>
-            </ul>
-        </div>
-        
-        <div class="section-title">OTHER PROFESSIONAL DETAILS</div>
-        <div class="details">
-            <div class="detail-line">
-                <span><strong>Languages:</strong></span>
-                <span>English, Punjabi, Hindi (Speak, Read, Write)</span>
-            </div>
-            <div class="detail-line">
-                <span><strong>Availability:</strong></span>
-                <span>Willing to Work From Office: Yes</span>
-            </div>
-        </div>
-
     </div>
+
+    <script>
+        const toggleButton = document.getElementById('toggleMore');
+        const moreOptions = document.getElementById('moreOptions');
+
+        toggleButton.addEventListener('click', () => {
+            const isVisible = moreOptions.classList.toggle('visible');
+            
+            // Update button text and symbol
+            if (isVisible) {
+                toggleButton.textContent = 'Hide Options ↑';
+            } else {
+                toggleButton.textContent = 'View More Options ↓';
+            }
+        });
+    </script>
 
 </body>
 </html>
