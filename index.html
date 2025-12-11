@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amandeep Singh - Technical Portfolio</title>
     <style>
-        /* BASE STYLES & LAYOUT */
+        /* ====================================
+           BASE STYLES & LAYOUT
+        ==================================== */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -20,7 +22,7 @@
         }
 
         .container {
-            background: rgba(44, 62, 80, 0.95); /* Semi-transparent dark background */
+            background: rgba(44, 62, 80, 0.95);
             padding: 40px 60px;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -43,7 +45,9 @@
             font-weight: 300;
         }
 
-        /* MAIN BUTTONS - BEAUTIFULLY DESIGNED */
+        /* ====================================
+           BUTTON STYLES
+        ==================================== */
         .cta-buttons {
             display: flex;
             flex-direction: column;
@@ -51,7 +55,7 @@
             margin-bottom: 30px;
         }
 
-        .cta-buttons a, .more-toggle-button {
+        .cta-buttons button, .more-toggle-button {
             text-decoration: none;
             padding: 15px 25px;
             border-radius: 8px;
@@ -60,13 +64,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            border: none;
         }
         
         /* Resume Button (Primary) */
         .btn-primary {
             background-color: #2ecc71; /* Emerald Green */
             color: #fff;
-            border: 2px solid #2ecc71;
         }
 
         .btn-primary:hover {
@@ -77,8 +81,8 @@
 
         /* Cover Letter Button (Secondary) */
         .btn-secondary {
-            background-color: transparent;
-            color: #3498db; /* Bright Blue */
+            background-color: #4387b4;
+            color: #e7e7e7; /* Bright Blue */
             border: 2px solid #3498db;
         }
 
@@ -89,11 +93,23 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
         }
 
+        .service-btn {
+            background-color: #b92926;
+            color: #e7e7e7; /* Bright Blue */
+            border: 2px solid #3498db;
+        }
+
+        .service-btn:hover {
+            background-color: #d04643;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
         /* VIEW MORE TOGGLE */
         .more-toggle-button {
             background-color: #7f8c8d; /* Grey */
             color: #fff;
-            border: none;
             width: 100%;
         }
 
@@ -102,7 +118,7 @@
             transform: translateY(-2px);
         }
 
-        /* MORE OPTIONS SECTION (Hidden by default) */
+        /* MORE OPTIONS SECTION */
         #moreOptions {
             max-height: 0;
             overflow: hidden;
@@ -114,7 +130,7 @@
         }
 
         #moreOptions.visible {
-            max-height: 500px; /* Large enough to show all content */
+            max-height: 500px;
             opacity: 1;
         }
 
@@ -125,16 +141,160 @@
             font-size: 1em;
         }
 
-        .additional-links a {
+        .additional-links a, .additional-links button {
             color: #ecf0f1;
             text-decoration: none;
             padding: 8px;
             border-radius: 4px;
             background: rgba(52, 152, 219, 0.2);
+            border: none;
+            cursor: pointer;
         }
 
-        .additional-links a:hover {
+        .additional-links a:hover, .additional-links button:hover {
             background: rgba(52, 152, 219, 0.5);
+        }
+
+        /* ====================================
+           GENERIC MODAL STYLES (for Resume/CL)
+        ==================================== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 100%;
+            max-width: 900px;
+            height: 85vh;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        /* Modal for Contact Form */
+        #contactModal .modal-content {
+            max-width: 500px;
+            height: auto;
+            max-height: 90vh;
+        }
+
+        .modal-header {
+            padding: 10px 15px;
+            background-color: #2c3e50;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: left;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: #fff;
+        }
+
+        .close {
+            color: #fff;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #e74c3c;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* ====================================
+           CONTACT FORM STYLES - REFINED
+        ==================================== */
+        .contact-form label {
+            display: block;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Ensure form font consistency */
+            text-align: left;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333; /* Darker color for readability inside the white modal */
+        }
+
+        .contact-form select,
+        .contact-form input[type="text"],
+        .contact-form textarea {
+            width: 100%; /* Full width */
+            padding: 12px;
+            border: 2px solid #ccc;
+            border-radius: 8px; /* Rounded corners for modern look */
+            box-sizing: border-box;
+            font-size: 1em;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+        
+        /* Focus effect */
+        .contact-form select:focus,
+        .contact-form input[type="text"]:focus,
+        .contact-form textarea:focus {
+            border-color: #3498db; /* Bright Blue on focus */
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+        }
+        
+        .contact-form .form-actions {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column; /* Stack warning and button for clarity */
+            gap: 10px;
+            align-items: flex-end;
+        }
+        
+        .contact-form .btn-submit {
+            background-color: #2ecc71; /* Use Emerald Green for the primary action button */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            width: 100%; /* Full width submit button */
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form .btn-submit:hover {
+            background-color: #27ae60;
+        }
+        
+        .contact-form .btn-warning {
+            color: #e67e22; /* Orange for warning text */
+            font-size: 0.85em;
+            text-align: center; /* Center the warning text */
+            width: 100%;
         }
     </style>
 </head>
@@ -145,24 +305,195 @@
         <h2>Lead Consultant | System Architecture & Microservices Specialist</h2>
 
         <div class="cta-buttons">
-            <a href="Amandeep_Resume_V2.html" class="btn-primary">View Resume</a>
-            <a href="Amandeep_Cover_Letter_V2.html" class="btn-secondary">View Cover Letter</a>
+            <button class="btn-primary" onclick="openDocModal('docModal', 'Resume')">View Resume</button>
+            <button class="btn-secondary" onclick="openDocModal('docModal', 'Cover Letter')">View Cover Letter</button>
+            <button class="service-btn" onclick="openDocModal('contactModal')">Consulting & Services</button>
         </div>
 
-        <button id="toggleMore" class="more-toggle-button">View More Options ↓</button>
+        <button id="toggleMore" class="more-toggle-button">View More Options &nbsp; &downarrow;</button>
 
         <div id="moreOptions">
             <h3>Connect & Follow</h3>
             <div class="additional-links">
                 <a href="https://www.linkedin.com/in/eramandeepsingh" target="_blank">LinkedIn Profile</a>
-                <a href="[YOUR_YOUTUBE_CHANNEL_LINK]" target="_blank">YouTube Channel</a>
-                <a href="[YOUR_GITHUB_PROFILE_LINK]" target="_blank">GitHub Profile</a>
-                <a href="mailto:er.amanmalhi@gmail.com">Send Email</a>
+                <a href="[YOUR_YOUTUBE_CHANNEL_LINK]" target="_blank">YouTube Channel</a>                
+            </div>
+        </div>
+    </div>
+
+    <div id="docModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('docModal')">&times;</span>
+                <h3 id="docModalTitle"></h3>
+            </div>
+            <div class="modal-body" style="height: calc(100% - 40px);">
+                <iframe id="docModalFrame" src="" title="Document Viewer"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal('contactModal')">&times;</span>
+                <h3>Consulting & Services Inquiry</h3>
+            </div>
+            <div class="modal-body">
+                <form class="contact-form" onsubmit="return false;">
+                    <label for="contact-service">Select Service:</label>
+                    <select id="contact-service" onchange="loadServiceTemplate()" required>
+                        <option value="">-- Choose a service --</option>
+                        <option value="Resume Review">Resume Review / Optimization</option>
+                        <option value="Mock Interview - Java/Spring">Mock Interview - Java/Spring Boot/Microservices/Kafka</option>
+                        <option value="General Inquiry">General Inquiry / Collaboration</option>
+                    </select>
+
+                    <label for="contact-sender">Your Name / Company:</label>
+                    <input type="text" id="contact-sender" placeholder="e.g., Amandeep Singh from Infosys Limited">
+
+                    <label for="contact-subject">Subject:</label>
+                    <input type="text" id="contact-subject" placeholder="Subject will be automatically filled" required>
+                    
+                    <label for="contact-body">Message Body:</label>
+                    <textarea id="contact-body" placeholder="Please describe your experience level, goals, and availability." required></textarea>
+
+                    <div class="form-actions">
+                        <span class="btn-warning">
+                            *This will open your email client. Attachments must be added manually.
+                        </span>
+                        <button type="button" class="btn-submit" onclick="sendMail()">
+                            Open Email Client
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
     <script>
+        const TARGET_EMAIL = "er.amanmalhi@gmail.com"; 
+
+        // Templates for services
+        const templates = {
+            "Resume Review": {
+                subject: "Service Inquiry: Resume Review / Optimization",
+                body: "Hello Amandeep,\n\nI would like to avail your Resume Review service. \n\nMy current professional level is: [e.g., 5 years experience, seeking Senior role]\nMy primary goal is: [e.g., optimize for FAANG interviews / switch domain]\nMy availability to discuss is: [e.g., evenings IST, any time on weekends]\n\nThank you,\n[Your Name]"
+            },
+            "Mock Interview - Java/Spring": {
+                subject: "Service Inquiry: Mock Interview - Java/Spring Boot/Microservices",
+                body: "Hello Amandeep,\n\nI am requesting a Mock Interview focusing on Java, Spring Boot, and Microservices architecture. \n\nI have [X] years of experience.\nThe target role I am interviewing for is: [e.g., Senior Software Engineer]\nTopics I specifically want to cover: [e.g., Multi-threading, Reactive Programming, Service Discovery]\n\nThank you,\n[Your Name]"
+            },
+            "Mock Interview - Kafka": {
+                subject: "Service Inquiry: Mock Interview - Kafka/Distributed Systems",
+                body: "Hello Amandeep,\n\nI am requesting a Mock Interview focusing on Kafka and Distributed Systems design. \n\nMy experience level with Kafka is: [e.g., production experience for 2 years / beginner]\nTopics I specifically want to cover: [e.g., Partitioning strategies, Consumer Groups, Schema Registry]\n\nThank you,\n[Your Name]"
+            },
+            "General Inquiry": {
+                subject: "General Inquiry / Collaboration Request",
+                body: "Hello Amandeep,\n\nI am reaching out regarding [briefly explain purpose].\n\nI would like to [e.g., collaborate on an open-source project / discuss a career path].\n\nPlease let me know your thoughts.\n\nThank you,\n[Your Name]"
+            }
+        };
+
+        function loadServiceTemplate() {
+            const serviceSelect = document.getElementById('contact-service');
+            const selectedService = serviceSelect.value;
+            const subjectField = document.getElementById('contact-subject');
+            const bodyField = document.getElementById('contact-body');
+            
+            if (selectedService && templates[selectedService]) {
+                subjectField.value = templates[selectedService].subject;
+                bodyField.value = templates[selectedService].body;
+            } else {
+                subjectField.value = "";
+                bodyField.value = "";
+            }
+        }
+
+
+        // --- GENERIC MODAL HANDLERS ---
+        function openDocModal(modalId, type = null) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = "block";
+            document.body.style.overflow = 'hidden'; 
+
+            if (modalId === 'docModal' && type) {
+                const modalFrame = document.getElementById("docModalFrame");
+                const modalTitle = document.getElementById("docModalTitle");
+
+                if (type === 'Resume') {
+                    modalFrame.src = 'Amandeep_Resume_V2.html';
+                    modalTitle.textContent = 'Amandeep Singh - Professional Resume';
+                } else if (type === 'Cover Letter') {
+                    modalFrame.src = 'Amandeep_Cover_Letter_V2.html';
+                    modalTitle.textContent = 'Amandeep Singh - Cover Letter';
+                }
+            } else if (modalId === 'contactModal') {
+                // Reset form when opening contact modal
+                document.getElementById('contact-service').value = '';
+                document.getElementById('contact-sender').value = '';
+                document.getElementById('contact-subject').value = '';
+                document.getElementById('contact-body').value = '';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = "none";
+            document.body.style.overflow = 'auto'; 
+            
+            if (modalId === 'docModal') {
+                document.getElementById("docModalFrame").src = "";
+            }
+        }
+
+        // Close the modal when the user clicks anywhere outside of the modal content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                if (event.target.id === 'docModal') {
+                    closeModal('docModal');
+                } else if (event.target.id === 'contactModal') {
+                    closeModal('contactModal');
+                }
+            }
+        }
+
+        // --- MAILTO LOGIC ---
+        function sendMail() {
+            const service = document.getElementById('contact-service').value;
+            const sender = document.getElementById('contact-sender').value;
+            const subject = document.getElementById('contact-subject').value;
+            const body = document.getElementById('contact-body').value;
+
+            // Basic validation
+            if (!service) {
+                 alert("Please select a service type.");
+                return;
+            }
+            if (!subject || !body) {
+                alert("Please ensure the Subject and Message Body are filled.");
+                return;
+            }
+
+            // Construct the mailto link
+            let fullSubject = subject;
+            if (sender) {
+                fullSubject = `[Service Inquiry - ${sender}] ${subject}`;
+            }
+
+            // Encode components
+            const encodedSubject = encodeURIComponent(fullSubject);
+            const encodedBody = encodeURIComponent(body);
+
+            // Open email client
+            const mailtoLink = `mailto:${TARGET_EMAIL}?subject=${encodedSubject}&body=${encodedBody}`;
+            window.location.href = mailtoLink;
+            
+            // Close the modal and inform the user
+            closeModal('contactModal');
+            alert("Your email client is now open. Please review the pre-filled message and manually attach any relevant files before sending.");
+        }
+
+        // --- VIEW MORE LOGIC ---
         const toggleButton = document.getElementById('toggleMore');
         const moreOptions = document.getElementById('moreOptions');
 
@@ -171,9 +502,9 @@
             
             // Update button text and symbol
             if (isVisible) {
-                toggleButton.textContent = 'Hide Options ↑';
+                toggleButton.innerHTML = 'Hide Options &nbsp; &uparrow;';
             } else {
-                toggleButton.textContent = 'View More Options ↓';
+                toggleButton.innerHTML = 'View More Options &nbsp; &downarrow;';
             }
         });
     </script>
